@@ -38,8 +38,17 @@ Defined a function `cleaner(text)` that uses Regex to convert the text from Wiki
 
 ### Notebook 3 -- Semantic_Search
 
-Using Latent Semantic Analysis and cosine similarity specifically, I developed a query to find the top 5 related articles to a specified search term. Recall that it is only searching the pages/articles underneath the categories Machine Learning and Business Software on Wikipedia.
+Using Latent Semantic Analysis and cosine similarity specifically, I developed a workflow to find the top 5 related articles to a specified search term. Recall that it is only searching the pages/articles underneath the categories Machine Learning and Business Software on Wikipedia.
 
-In the project, I ended up searching on the term 'mysql', finding the 5 most related articles to that search term and the associated cosine similarity between the term and the articles.
+The workflow is as follows:
+
+1. Using `TFIDFVectorizer`, vectorized a Pandas Series of the text of Wikipedia pages
+2. Transformed a Pandas Series of the search terms onto the fit `TFIDFVectorizer` from step 1
+3. Picked one search term from the Pandas Series in step 2 and appended it to the DataFrame of vectorized text from step 1
+4. Used `TruncatedSVD` to decompose features of the DataFrame from step 3 into 50 components
+5. Took the row from the DataFrame of the vectorized and decomposed search term and applied `cosine_similarity` to it against the entire DataFrame, adding he output values as a column to the DataFrame from step 4
+6. Sorted descending on the new column to see the top most related pages to the search term
 
 
+### Next Steps
+- Build a model to predict parent category, 'Machine Learning' or 'Business Software', of pages based on text

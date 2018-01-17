@@ -20,6 +20,7 @@ The project has two components:
 
 This collection was done using a series of defined functions:
 `format_name(search_name)`: formats the text of the category, or `search_name`, using Regex so that it can be used in a request query
+
 `get_cat_stuff(category)`: queries all sub-categories and pages underneath a specified Wikipedia `category`
 `get_page_stuff(pageid)`: queries the text from a specified page, selecting said page by `pageid`
 `cat_query_to_df(category)`: converts the output from `get_cat_stuff(category)` to a DataFrame
@@ -32,7 +33,7 @@ The raw page text and its category information was then written to a collection 
 
 ### Notebook 2 -- Data_Cleaning
 
-Defined a function `cleaner(text)` that uses regex to convert the text from Wikipedia pages collected in the prior step so that they are legible. 
+Defined a function `cleaner(text)` that uses Regex to convert the text from Wikipedia pages collected in the prior step so that they are legible. 
 
 
 ### Notebook 3 -- Semantic_Search
